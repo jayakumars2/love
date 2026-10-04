@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#160019,#3b092f,#7b164f,#ff4f81);
+  color:white;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.12),transparent 25%),
+    radial-gradient(circle at 80% 80%,rgba(255,100,180,.18),transparent 30%);
+  pointer-events:none;
+}
+
+.container{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:25px;
+}
+
+.card{
+  width:min(700px,100%);
+  padding:45px 28px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:30px;
+  background:rgba(255,255,255,.09);
+  backdrop-filter:blur(18px);
+  box-shadow:0 25px 80px rgba(0,0,0,.35);
+  position:relative;
+  z-index:2;
+}
+
+.emoji{
+  font-size:65px;
+  animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  15%{transform:scale(1.18)}
+  30%{transform:scale(1)}
+  45%{transform:scale(1.12)}
+}
+
+h1{
+  margin-top:15px;
+  font-size:clamp(35px,8vw,62px);
+  font-family:'Pacifico',cursive;
+  color:#fff;
+  text-shadow:0 5px 25px rgba(255,70,150,.5);
+}
+
+.subtitle{
+  margin:15px auto;
+  max-width:560px;
+  color:#ffe8f2;
+  line-height:1.8;
+  font-size:16px;
+}
+
+.love-emojis{
+  font-size:32px;
+  margin:22px 0;
+  letter-spacing:8px;
+}
+
+.message{
+  margin:25px auto;
+  padding:25px;
+  max-width:580px;
+  border-radius:22px;
+  background:rgba(255,255,255,.08);
+  line-height:1.9;
+  color:#fff2f7;
+}
+
+.highlight{
+  color:#ffb5d1;
+  font-weight:700;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+button{
+  border:none;
+  padding:14px 28px;
+  border-radius:50px;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.yes{
+  background:linear-gradient(135deg,#ff4f81,#ff1760);
+  color:white;
+  box-shadow:0 10px 30px rgba(255,30,100,.35);
+}
+
+.no{
+  background:rgba(255,255,255,.12);
+  color:white;
+  border:1px solid rgba(255,255,255,.2);
+}
+
+button:hover{
+  transform:translateY(-4px) scale(1.04);
+}
+
+.hidden{
+  display:none;
+}
+
+#response{
+  margin-top:25px;
+  font-size:20px;
+  font-weight:600;
+  animation:pop .5s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.5);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.floating{
+  position:fixed;
+  bottom:-50px;
+  font-size:25px;
+  animation:floatUp linear forwards;
+  pointer-events:none;
+  z-index:1;
+}
+
+@keyframes floatUp{
+  to{
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+.secret{
+  margin-top:30px;
+  padding:20px;
+  border-radius:20px;
+  background:rgba(255,255,255,.07);
+  color:#ffd8e8;
+  line-height:1.8;
+}
+
+.signature{
+  margin-top:25px;
+  font-family:'Pacifico',cursive;
+  font-size:24px;
+  color:#ffb1cf;
+}
+
+.music-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:10;
+  width:48px;
+  height:48px;
+  padding:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.15);
+  color:white;
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(10px);
+}
+
+@media(max-width:500px){
+  .card{
+    padding:35px 20px;
+  }
+
+  .emoji{
+    font-size:52px;
+  }
+
+  .love-emojis{
+    font-size:25px;
+    letter-spacing:4px;
+  }
+
+  .message{
+    padding:20px 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵</button>
+
+<div class="container">
+  <div class="card">
+
+    <div class="emoji">🥹❤️</div>
+
+    <h1>Hey You... 💕</h1>
+
+    <p class="subtitle">
+      There is something I've been wanting to tell you...
+      So I made this little corner of the internet just for you. 🌸
+    </p>
+
+    <div class="love-emojis">
+      🫶🏻 💗 🥹 🌹 💞 ✨
+    </div>
+
+    <div class="message">
+      <p>
+        I don't know exactly when it happened...
+        but somewhere between our conversations,
+        your smile 😊, your little habits,
+        and the way you make ordinary moments feel special...
+      </p>
+
+      <br>
+
+      <p>
+        I started liking you a little more
+        <span class="highlight">every single day. ❤️</span>
+      </p>
+
+      <br>
+
+      <p>
+        And now I have just one question...
+      </p>
+    </div>
+
+    <h2>Will you be my special person? 🥺❤️</h2>
+
+    <div class="love-emojis">
+      💓 💓 💓
+    </div>
+
+    <div class="buttons">
+      <button class="yes" onclick="sayYes()">YES 🥹❤️</button>
+      <button class="no" onclick="moveNo()">NO 🙈</button>
+    </div>
+
+    <div id="response" class="hidden"></div>
+
+    <div id="secret" class="secret hidden">
+      🌷 You know what?
+
+      <br><br>
+
+      You don't have to be perfect.
+      You don't have to do anything extraordinary.
+
+      <br><br>
+
+      <strong>
+        Just being you is already enough to make
+        someone smile. 🫶🏻❤️
+      </strong>
+
+      <div class="signature">
+        — Someone who really likes you 💌
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+/* Floating love emojis */
+
+const emojis = [
+  "❤️","💗","💕","💖","💓",
+  "🥹","🫶🏻","🌹","✨","💞","😘"
+];
+
+function createHeart(){
+
+  const el = document.createElement("div");
+
+  el.className = "floating";
+
+  el.innerText =
+    emojis[Math.floor(Math.random()*emojis.length)];
+
+  el.style.left = Math.random()*100 + "vw";
+
+  el.style.animationDuration =
+    (4 + Math.random()*5) + "s";
+
+  el.style.fontSize =
+    (18 + Math.random()*20) + "px";
+
+  document.body.appendChild(el);
+
+  setTimeout(()=>{
+    el.remove();
+  },9000);
+}
+
+setInterval(createHeart,500);
+
+
+/* YES button */
+
+function sayYes(){
+
+  const response =
+    document.getElementById("response");
+
+  const secret =
+    document.getElementById("secret");
+
+  response.classList.remove("hidden");
+
+  response.innerHTML =
+    "AHHHH! 🥹💗 You just made someone VERY happy! 🫶🏻✨";
+
+  secret.classList.remove("hidden");
+
+  /* Love explosion */
+
+  for(let i=0;i<35;i++){
+
+    setTimeout(()=>{
+      createHeart();
+    },i*70);
+
+  }
+
+}
+
+
+/* NO button playfully moves */
+
+function moveNo(){
+
+  const btn =
+    document.querySelector(".no");
+
+  const x =
+    (Math.random()*200)-100;
+
+  const y =
+    (Math.random()*150)-75;
+
+  btn.style.transform =
+    `translate(${x}px,${y}px)`;
+
+}
+
+
+/* Optional music */
+
+let playing = false;
+
+const audio = new Audio(
+  "https://cdn.pixabay.com/audio/2022/10/25/audio_9468c9b2d5.mp3"
+);
+
+audio.loop = true;
+audio.volume = 0.25;
+
+function toggleMusic(){
+
+  const button =
+    document.getElementById("musicBtn");
+
+  if(!playing){
+
+    audio.play().catch(()=>{});
+
+    button.innerText = "🔊";
+    playing = true;
+
+  }else{
+
+    audio.pause();
+
+    button.innerText = "🎵";
+    playing = false;
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
